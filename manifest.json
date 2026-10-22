@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Split View Diff",
+  "version": "1.1.0",
+  "description": "Chrome 분할 보기에서 왼쪽/오른쪽 탭의 텍스트 차이를 색상으로 표시합니다.",
+  "permissions": ["tabs", "scripting", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "분할 보기 비교",
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "run-compare": {
+      "suggested_key": { "default": "Alt+Shift+V" },
+      "description": "분할 보기 좌우 비교 실행"
+    },
+    "next-diff": {
+      "suggested_key": { "default": "Alt+Shift+Down" },
+      "description": "다음 차이로 이동"
+    },
+    "prev-diff": {
+      "suggested_key": { "default": "Alt+Shift+Up" },
+      "description": "이전 차이로 이동"
+    }
+  }
+}

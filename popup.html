@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { width: 300px; margin: 0; padding: 14px; font: 13px/1.5 system-ui, sans-serif; color: #222; }
+    h1 { font-size: 14px; margin: 0 0 10px; }
+    .buttons { display: flex; gap: 6px; align-items: center; }
+    .buttons + .buttons { margin-top: 6px; }
+    button { flex: 1; padding: 7px 0; border: 1px solid #c8c8c8; border-radius: 6px; background: #fff; cursor: pointer; font: inherit; }
+    button.primary { background: #1a73e8; border-color: #1a73e8; color: #fff; }
+    button:disabled { opacity: 0.6; cursor: default; }
+    #position { min-width: 56px; text-align: center; color: #555; font-variant-numeric: tabular-nums; }
+    .options { margin-top: 10px; display: flex; flex-direction: column; gap: 4px; }
+    .options label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    #status { margin: 10px 0 0; min-height: 1.5em; }
+    #status.error { color: #c5221f; }
+    .legend { margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; color: #555; font-size: 12px; }
+    .legend span { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -2px; margin-right: 4px; }
+    #shortcuts { margin-top: 8px; border-collapse: collapse; width: 100%; }
+    #shortcuts th { text-align: left; font-weight: normal; padding: 1px 0; }
+    #shortcuts th.title { color: #333; padding-bottom: 3px; }
+    #shortcuts td { padding: 1px 0; text-align: right; white-space: nowrap; }
+    #shortcuts kbd { font: 11px/1.4 ui-monospace, Consolas, monospace; padding: 1px 5px; border: 1px solid #d0d0d0; border-bottom-width: 2px; border-radius: 4px; background: #f7f7f7; color: #333; }
+    #shortcuts .missing { color: #c5221f; }
+    button.link { margin-top: 4px; padding: 4px 0; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>분할 보기 비교</h1>
+  <div class="buttons">
+    <button id="compare" class="primary">비교</button>
+    <button id="clear">지우기</button>
+  </div>
+  <div class="buttons">
+    <button id="prev" title="이전 차이 (Alt+Shift+↑)">◀ 이전</button>
+    <span id="position">– / –</span>
+    <button id="next" title="다음 차이 (Alt+Shift+↓)">다음 ▶</button>
+  </div>
+  <div class="options">
+    <label><input type="checkbox" id="ignoreCase">대소문자 무시</label>
+    <label><input type="checkbox" id="syncScroll">왼쪽/오른쪽 스크롤 동기화</label>
+  </div>
+  <p id="status"></p>
+  <div class="legend">
+    <div><span style="background: rgba(255,70,70,.45)"></span>왼쪽에만 있는 내용</div>
+    <div><span style="background: rgba(40,200,90,.45)"></span>오른쪽에만 있는 내용</div>
+    <table id="shortcuts"></table>
+    <button id="openShortcuts" class="link" hidden>단축키 설정 열기</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
